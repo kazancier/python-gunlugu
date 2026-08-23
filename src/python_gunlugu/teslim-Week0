@@ -1,0 +1,18 @@
+def main():
+    sus0 = "#"*50
+
+    #input olarak ismi al
+    name = input("What's your name? ").strip().title()
+    #ismin karakter sayısını bul
+    name_len=len(name)
+    #sus0'ı bas
+    print(sus0)
+    #50 - karakter sayısı * # /2 kadar sola ve sağa yapıştır
+    kare_sayisi = (50 - name_len) / 2
+    kare_kalan= (50 - name_len) % 2
+    sus1 = "#"*int(kare_sayisi)
+    print(f"{sus1}{"#"*kare_kalan}{name}{sus1}")
+    #sus0'ı bas
+    print(sus0)
+
+main()
