@@ -1,6 +1,0 @@
-def main():
-    number_of_rects = int(input("What is the width?: "))
-    for i in range(5):
-        print("0" * number_of_rects)
-
-main()
