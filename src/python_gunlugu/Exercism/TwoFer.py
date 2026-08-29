@@ -1,5 +1,12 @@
-name = input("What is your name?: ")
-if name == "":
-    print("One for you, one for me")
-else:
-    print(f"One for {name}, one for me")
+def main():
+    name = input("Name?: ")
+    if name =="":
+        name = two_fer()
+    else:
+        name = two_fer(name)
+    print(name)
+
+def two_fer(name="you"):
+        return f"One for {name}, one for me."
+
+main()
