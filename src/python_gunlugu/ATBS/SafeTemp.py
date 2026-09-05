@@ -13,3 +13,7 @@ if scale.lower().strip() =="f":
         print("Danger")
     else:
         print("Safe") 
+
+
+
+        
