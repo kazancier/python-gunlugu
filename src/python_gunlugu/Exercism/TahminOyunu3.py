@@ -1,12 +1,28 @@
+"""
+1 - geçerli tahmin al fonksiyonunu ve main deki çok küçük/büyükü değiştiririm
+
+2-kiyasla_b 'yi test etmek daha kolay sadece dönenlere bakarım, kıyaslada printlere de bakmak gerekir.
+
+3-kıyasla_b fonsiyon daha kompak oldu
+"""
+
 import random
 
 def main():
 
    
     rastgele_sayi = rastgele_sayi_uret()
-    tahmin = gecerli_tahmin_al()
-    while not kiyasla(tahmin, rastgele_sayi):
+    while True:
         tahmin = gecerli_tahmin_al()
+        kiyas = kiyasla_b(tahmin,rastgele_sayi)
+        if kiyas == "Bildin":
+            print(f"Bildin sayı {tahmin}.")
+            break
+        elif kiyas == "Küçük":
+            print("Çok küçük")
+        elif kiyas == "Büyük":
+            print("Çok büyük")
+            
 
     
        
@@ -23,7 +39,7 @@ def gecerli_tahmin_al():
             return int(tahmin)
         else:
             print("Lütfen pozitif bir sayı giriniz.")
-            
+ #artık kullanımıyor. kıyasla_b fonksiyonu kullanılıyor.           
 def kiyasla(tahmin, rastgele_sayi):
     """ Tahmin ve rastgele sayıyı karşılaştırır, tahmin doğruysa True döndürür, değilse False döndürür ve kullanıcıya ipucu verir. """
     if tahmin == rastgele_sayi:
@@ -35,4 +51,13 @@ def kiyasla(tahmin, rastgele_sayi):
     else:
         print("Çok büyük")
         return False
+
+def kiyasla_b(tahmin,rastgele_sayi):
+    """ Tahmin ve rastgele sayıyı karşılaştırır, tahmin doğruysa Bildin döndürür, değilse Küçük / Büyük döndürür . """
+    if tahmin == rastgele_sayi:
+        return "Bildin"
+    elif tahmin < rastgele_sayi:
+        return "Küçük"
+    else:
+        return "Büyük"
 main()
