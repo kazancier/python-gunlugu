@@ -30,13 +30,15 @@ def is_valid(s):
         sayi_goruldu_mu = False
         sifir_goruldu_mu = False
         for s in s_list:
-            if sifir_goruldu_mu and s.isdigit():
-                return False
-            elif s.isdigit():
+            
+            if s.isdigit():
+                if s == "0" and not sayi_goruldu_mu:
+                    return False
                 sayi_goruldu_mu = True
                 if s == "0":
                     sifir_goruldu_mu = True
-                             
+                
+                           
             elif s.isalpha() and sayi_goruldu_mu:
                 return False   
                     
