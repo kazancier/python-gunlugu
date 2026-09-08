@@ -1,9 +1,10 @@
 """
-1 - geçerli tahmin al fonksiyonunu ve main deki çok küçük/büyükü değiştiririm
-
+1 - İngilizceye çevirirken tüm mesaj metinlerini değiştirmek gerekir. printleri maine toplanrsam daha kolay çevirim. yoksa gidip fonksiyonun
+içindeki printleri de değiştirmek gerekir.
 2-kiyasla_b 'yi test etmek daha kolay sadece dönenlere bakarım, kıyaslada printlere de bakmak gerekir.
 
-3-kıyasla_b fonsiyon daha kompak oldu
+3-kıyasla_b'yi seçerim hem testi kolay hem çeviri gerekirse, ya da değişiklik gerekirse daha kolay
+main biraz uzadı ama olsun ileriye dönük işimi daha sağlılı ve kolay hale getirdi.
 """
 
 import random

@@ -3,11 +3,12 @@ def main():
     print_rows(5)
 
 def print_columns(height):
-    print("#\n" * height , sep="")
+    """parametre kadar yükseklite bir # kolonu basar"""
+    print("#\n" * height, end="")
 
-def print_rows(widht):
-    print("?" * widht)
-
+def print_rows(width):
+    """parametre kadar genişlikte bir ? satırı basar"""
+    print("?" * width, end="")
 main()
 
     
