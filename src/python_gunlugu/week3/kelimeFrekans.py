@@ -86,9 +86,7 @@ def dosya_oku(dosya_yolu):
     except FileNotFoundError:
         print(f"Hata: '{dosya_yolu}' adında bir dosya bulunamadı.")
         return None
-    """except Exception as e:
-        print(f"Bir hata oluştu: {e}")
-        return None"""
+   
 
 
 
