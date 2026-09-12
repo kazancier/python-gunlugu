@@ -22,7 +22,7 @@ Yapay zeka teknolojileri hızla gelişiyor ve hayatımızı
  eleceğimizin temelini oluşturuyor.
 
 
-Kelime,Frekans
+Kelimeler ve frekansları sözlüğü
 {'alanda': 1,
  'bu': 1,
  'da': 1,
@@ -81,7 +81,7 @@ def kelime_frekansi(metin):
 def dosya_oku(dosya_yolu):
     try:
         with open(dosya_yolu, "r", encoding="utf-8") as dosya:
-            metin = dosya.raed()
+            metin = dosya.read()
             return metin
     except FileNotFoundError:
         print(f"Hata: '{dosya_yolu}' adında bir dosya bulunamadı.")
