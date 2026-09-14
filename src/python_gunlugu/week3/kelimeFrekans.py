@@ -10,6 +10,8 @@ büyük ya da küçük harf yazımlarını aynı görsün.
 
 Çıktıyı ingilizce alfabetik olarak sıralasın.
 
+Eğer dosya bulunamamışsa File NotFoundError yakala başka bir
+hata oluşursa onu doğrudan terminalde görelim.
 
 Örnek :
 
