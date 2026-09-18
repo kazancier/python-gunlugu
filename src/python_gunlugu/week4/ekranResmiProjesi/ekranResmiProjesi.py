@@ -7,9 +7,17 @@ hedef_klasor = Path.home() / "Desktop" / "Çeşitli Dökümanlar"
 ekran_goruntuleri = []
 
 for dosya in masaustu.iterdir():
-    if dosya.is_file() and (dosya.name.startswith("Ekran Resmi") or dosya.name.startswith("Screenshot")) and (dosya.name.endswith("jpg") or dosya.name.endswith("jpeg") or dosya.name.endswith("png")):
-        ekran_goruntuleri.append(dosya)
+    isim = dosya.name
 
+   
+    isim_uygun = isim.startswith("Ekran Resmi") or isim.startswith("Screenshot")
+        
+    
+    uzanti_uygun = isim.endswith("jpg") or isim.endswith("jpeg") or isim.endswith("png")
+        
+    
+    if isim_uygun and uzanti_uygun:
+        ekran_goruntuleri.append(dosya)
 
 if len(ekran_goruntuleri) == 0:
     print("Ekran görüntüsü bulunamdı")
