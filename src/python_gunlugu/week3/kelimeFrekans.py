@@ -13,6 +13,8 @@ büyük ya da küçük harf yazımlarını aynı görsün.
 Eğer dosya bulunamamışsa File NotFoundError yakala başka bir
 hata oluşursa onu doğrudan terminalde görelim.
 
+Eğer dosya boş ise boş süsülü parantez basılır
+
 Örnek :
 
 Yapay zeka teknolojileri hızla gelişiyor ve hayatımızı
