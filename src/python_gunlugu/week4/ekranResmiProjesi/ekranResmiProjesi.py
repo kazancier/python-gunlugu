@@ -8,12 +8,12 @@ ekran_goruntuleri = []
 
 for dosya in masaustu.iterdir():
     isim = dosya.name
-
+    yol = dosya
    
     isim_uygun = isim.startswith("Ekran Resmi") or isim.startswith("Screenshot")
         
     
-    uzanti_uygun = isim.endswith("jpg") or isim.endswith("jpeg") or isim.endswith("png")
+    uzanti_uygun = yol.suffix.lower() == '.jpg' or yol.suffix.lower() == ".jpeg" or yol.suffix.lower() == ".png"
         
     
     if isim_uygun and uzanti_uygun:
