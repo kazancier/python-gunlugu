@@ -1,6 +1,12 @@
 Bu araç masaüstüne yer alan önemsiz ekran resimlerini çöp sepetine gönderir. Önemli ekran resimlerinin ismini değiştirerek çeşitli dökümanlar klasörüne taşır. Araç resimlerin önemli/önemsiz olduğuna karar vermez. Kararı kullanıcı verir.
 
 Araç resmin önemli / önemsiz olduğunu sorar. Önemli ise yeni ismini sorar ve resmi çeşitli dökümanlara taşır.
+
+Verilen Cevap "E" ise Ekran Resminin yeni ismini sorar
+Cevap "H" ise çöp kutusuna taşır
+Cevap bu ikisi dışında birşey ise 
+"Cevabınızı anlamadım. Cevap E ya da H olmalı der.
+
 Önemsiz ise çöp sepetine taşır. Yanlış bir sınıflandırmayı geri alabilmek için silmez çöp kutusuna taşır.
 
 st_atime resim görüntülenmede güncellenmiyor. Bunu denedim ve sonrasında araştırdım işletim sistemi performans gerekçesiyle güncellemiyor.O yüzden onu kullanmaz.
