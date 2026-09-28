@@ -6,7 +6,7 @@ Masaüstündeki ekran görüntülerini sırayla Önizleme (Preview) uygulamasın
 
 ## Ne Yapar
 
-* **Ekran Görüntülerini Tutar:** Belirtilen klasördeki (`Desktop/Test`) yalnızca `"Ekran Resmi"` veya `"Screenshot"` ile başlayan ve `.jpg`, `.jpeg`, `.png` uzantılı dosyaları tespit eder.
+* **Ekran Görüntülerini Tutar:** Belirtilen klasördeki (`Desktop`) yalnızca `"Ekran Resmi"` veya `"Screenshot"` ile başlayan ve `.jpg`, `.jpeg`, `.png` uzantılı dosyaları tespit eder.
 * **Görsel Önizleme Sağlar:** Her bir görseli macOS Önizleme (Preview) uygulamasında 3 saniye boyunca otomatik açıp incelenmesine olanak tanır ve ardından kapatır.
 * **Dosya Yönetimi ve Arşivleme:**
   * **Sakla (E):** Kullanıcıdan yeni bir dosya adı alarak dosyayı uzantısını koruyacak şekilde Hedef Klasöre (`Desktop/Çeşitli Dökümanlar`) taşır.

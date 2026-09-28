@@ -47,9 +47,11 @@ def ekran_resimlerini_getir(target_path):
 
 
 def ekran_goruntusu_gerekli_mi(ekran_goruntusu):
-    """DÜZELTME 2: Bu fonksiyon artık tek bir iş yapıyor:
-
-    Dosyayı gösterir, kullanıcıya sorar ve sadece True/False kararı döner.
+    """
+    yolu verilen dosyayı gösterir ve kapatır, kullanıcı tercihini sorar,
+    tercihi anlayamazsa tekrar sorar.
+    kullanıcı dosyayı gerekli görürse True döner
+    Kullanıcı gereksiz görürse False döner
     """
     subprocess.run(["open", str(ekran_goruntusu)])
     time.sleep(3)
