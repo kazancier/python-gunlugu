@@ -5,7 +5,7 @@ from send2trash import send2trash
 
 
 def main():
-    masaustu = Path.home() / "Desktop" / "Test"
+    masaustu = Path.home() / "Desktop" 
     hedef_yol = Path.home() / "Desktop" / "Çeşitli Dökümanlar"
 
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
