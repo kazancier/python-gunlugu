@@ -8,6 +8,8 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "emoji>=2.16.0",
+    "requests>=2.34.2",
     "send2trash>=2.1.0",
 ]
 
