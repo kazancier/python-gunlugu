@@ -2,10 +2,17 @@ from pathlib import Path
 import subprocess
 import time
 from send2trash import send2trash
+import argparse
+
 
 
 def main():
-    masaustu = Path.home() / "Desktop" 
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--klasor", default="test")
+    args=parser.parse_args()
+
+    masaustu = Path.home() / "Desktop" / args.klasor
     hedef_yol = Path.home() / "Desktop" / "Çeşitli Dökümanlar"
 
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)

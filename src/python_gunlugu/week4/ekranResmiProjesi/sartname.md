@@ -21,5 +21,29 @@ Bilinen Sınırlar :
 
 Eğer yeni dosya isminde "/" var ise hata döner
 
+Hedef ve Kaynak klasörler kullanıcıya çalıştırırken tanımlar.
+
+Kullanıcı kaynak klasörü vermez ise Default olarak Desktop kullanılır. Yazılımın amacaı masaüstündeki Ekran resimlerini temizlemek.
+
+Kullanıcı hedef klasörü vermez ise Masaüstünde Çeşitli Dökümanlar isminde bir klasör oluşturulur ve dökümanlar buraya kayıt edilir.
+
+Örnek :
+
+python ekranResmiProjesi.py " Desktop" "Desktop/Çeşitli\ Dökümanlar"
+
+4 Ekran Resmi bulundu.
+
+python ekranResmiProjesi.py " Desktop" "Desktop/Çeşitli\ Dökümanlar"
+
+başarılı
+
+python ekranResmiProjesi.py
+
+başarılı
+
+python ekranResmiProjesi.py 'Subtop' 
+
+Hata : Kaynak klasör bulunamadı
+
 
 
