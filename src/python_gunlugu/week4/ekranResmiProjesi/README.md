@@ -46,4 +46,8 @@ Sabit Zamanlayıcı (3 Saniye): Önizleme penceresi her görsel için sabit olar
 
 Önizleme Kapanma Çakışması: Kod quit app "Preview" komutunu çalıştırdığından, arka planda Önizleme uygulamasında açık olan diğer tüm pencereler/dokümanlar da kapatılır.
 
-Sabit Dosya Yolları: Kaynak ve hedef dizinler (Desktop/Test ve Desktop/Çeşitli Dökümanlar) doğrudan kod içerisinde tanımlanmıştır (hardcoded); terminal parametresi veya yapılandırma dosyası desteği sunmaz.
+Kaynak Klasör --klasor "kaynak klasör" şeklinde tanımlanabilir. Default değeri "test"
+Hedef Klasör --hedef "hedef klasör" şeklinde tanılanabilir. Default değeri "test_hedef"
+
+--dry-run ile diskte değişiklik yapmadan test edebilirsin. disk hareketleri metin olarak prove edilir.
+###
