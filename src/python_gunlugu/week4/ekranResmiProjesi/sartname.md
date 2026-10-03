@@ -23,27 +23,36 @@ Eğer yeni dosya isminde "/" var ise hata döner
 
 Hedef ve Kaynak klasörler kullanıcıya çalıştırırken tanımlar.
 
-Kullanıcı kaynak klasörü vermez ise Default olarak Desktop kullanılır. Yazılımın amacaı masaüstündeki Ekran resimlerini temizlemek.
+Kullanıcı kaynak klasörü vermez ise Default olarak Desktop\test kullanılır. Yazılımın amacaı masaüstündeki Ekran resimlerini temizlemek.
 
 Kullanıcı hedef klasörü vermez ise Masaüstünde Çeşitli Dökümanlar isminde bir klasör oluşturulur ve dökümanlar buraya kayıt edilir.
 
 Örnek :
 
-python ekranResmiProjesi.py " Desktop" "Desktop/Çeşitli\ Dökümanlar"
+python ekranResmiProjesi.py ~/Desktop ~/Desktop/Çeşitli\ Dökümanlar
 
-4 Ekran Resmi bulundu.
+Desktop klasöründe 4 Ekran Resmi bulundu.
 
-python ekranResmiProjesi.py " Desktop" "Desktop/Çeşitli\ Dökümanlar"
+python ekranResmiProjesi.py ~/Desktop ~/Desktop/Çeşitli\ Dökümanlar --dry-run
 
-başarılı
+Desktop/Test klasöründe 4 Ekran Resmi bulunacaktı.
 
 python ekranResmiProjesi.py
 
-başarılı
+Desktop klasöründe 4 Ekran Resmi bulundu.
 
 python ekranResmiProjesi.py 'Subtop' 
 
-Hata : Kaynak klasör bulunamadı
+Hata : Kaynak klasör bulunamadı çıkış kodu 1
+
+
+JSON Gunluk :
+
+Dosya hareketlerinin tarihçesi json dosyasında tutulur. Provalar gürültü oluşturmamak için kayıt edilmez.
+
+Hedef ve kaynak klasörler değişebileceği için Gunluk dosyası proje klasöründe yer alacaktır. 
+
+
 
 
 

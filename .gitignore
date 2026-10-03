@@ -11,3 +11,6 @@ wheels/
 
 # macOS system files
 .DS_Store
+
+# ekranResmiProjesi gunluk logu
+gunluk.json

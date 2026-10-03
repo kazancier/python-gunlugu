@@ -3,6 +3,8 @@ import subprocess
 import time
 from send2trash import send2trash
 import argparse
+from datetime import datetime
+import json
 
 
 
@@ -18,6 +20,7 @@ def main():
     hedef_yol = Path.home() / "Desktop" / args.hedef
     dry_run_status =args.dry_run
 
+   # json_yaz("1","2","3")
   
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
 
@@ -93,6 +96,7 @@ def tasi_cop(ekran_goruntusu,dry_run_param):
         else:
             send2trash(ekran_goruntusu)
             print(f"'{ekran_goruntusu.name}' çöp kutusuna taşındı.\n")
+            json_yaz("H",ekran_goruntusu.name , None)
 
     else:
         print("Dosya bulunamadı.\n")
@@ -133,8 +137,31 @@ def yeni_isim(ekran_goruntusu, hedef_yol,dry_run_param):
         ekran_goruntusu.rename(yeni_dosya_yolu)
         print(
             f"Başarılı! '{ekran_goruntusu.name}' -> '{yeni_dosya_yolu.name}' olarak taşındı.\n"
-        )
+           
+        ) 
+        json_yaz("E", ekran_goruntusu.name,yeni_dosya_yolu.name)
 
+def json_yaz(karar, dosya, yeni_ad):
+    json_file =Path(__file__).parent / "gunluk.json"
+
+    if json_file.exists():
+        with open(json_file, "r", encoding="utf-8") as file:
+            hareketler = json.load(file)
+    else:
+        hareketler = []
+
+    just_now = datetime.now()
+
+    yeni_hareket = {
+        "karar" : karar,
+        "zaman" : just_now.isoformat(),
+        "dosya" : dosya,
+        "yeni_ad" : yeni_ad
+    }
+    hareketler.append(yeni_hareket)
+
+    with open(json_file, "w", encoding="utf-8" ) as file:
+        json.dump(hareketler, file, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     main()
