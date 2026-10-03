@@ -10,10 +10,11 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--klasor", default="test")
+    parser.add_argument("--hedef" , default="test_hedef")
     args=parser.parse_args()
 
     masaustu = Path.home() / "Desktop" / args.klasor
-    hedef_yol = Path.home() / "Desktop" / "Çeşitli Dökümanlar"
+    hedef_yol = Path.home() / "Desktop" / args.hedef
 
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
 
@@ -21,7 +22,7 @@ def main():
         print("Ekran görüntüsü bulunamadı.")
         return
 
-    print(f"Masaüstünde {len(ekran_goruntuleri)} tane ekran görüntüsü bulundu.\n")
+    print(f"{masaustu} klasöründe {len(ekran_goruntuleri)} tane ekran görüntüsü bulundu.\n")
 
     for ekran_goruntusu in ekran_goruntuleri:
         # Karar alma ve aksiyonu uygulama mantığı main akışına çekildi
