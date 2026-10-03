@@ -11,11 +11,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--klasor", default="test")
     parser.add_argument("--hedef" , default="test_hedef")
+    parser.add_argument("--dry-run", action="store_true")
     args=parser.parse_args()
 
     masaustu = Path.home() / "Desktop" / args.klasor
     hedef_yol = Path.home() / "Desktop" / args.hedef
+    dry_run_status =args.dry_run
 
+  
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
 
     if not ekran_goruntuleri:
@@ -29,9 +32,9 @@ def main():
         gerekli_mi = ekran_goruntusu_gerekli_mi(ekran_goruntusu)
 
         if gerekli_mi:
-            yeni_isim(ekran_goruntusu, hedef_yol)
+            yeni_isim(ekran_goruntusu, hedef_yol,dry_run_status)
         else:
-            tasi_cop(ekran_goruntusu)
+            tasi_cop(ekran_goruntusu,dry_run_status)
 
 
 def ekran_resimlerini_getir(target_path):
@@ -82,15 +85,21 @@ def ekran_goruntusu_gerekli_mi(ekran_goruntusu):
         print("Anlayamadım, lütfen sadece 'E' veya 'H' girin.")
 
 
-def tasi_cop(ekran_goruntusu):
+def tasi_cop(ekran_goruntusu,dry_run_param):
+    dry_run = dry_run_param
     if ekran_goruntusu.exists():
-        send2trash(ekran_goruntusu)
-        print(f"'{ekran_goruntusu.name}' çöp kutusuna taşındı.\n")
+        if(dry_run):
+            print(f"'{ekran_goruntusu.name}' çöp kutusuna taşınacaktı.\n")
+        else:
+            send2trash(ekran_goruntusu)
+            print(f"'{ekran_goruntusu.name}' çöp kutusuna taşındı.\n")
+
     else:
         print("Dosya bulunamadı.\n")
 
 
-def yeni_isim(ekran_goruntusu, hedef_yol):
+def yeni_isim(ekran_goruntusu, hedef_yol,dry_run_param):
+    dry_run = dry_run_param
     hedef_klasor = hedef_yol
     hedef_klasor.mkdir(parents=True, exist_ok=True)
 
@@ -116,11 +125,15 @@ def yeni_isim(ekran_goruntusu, hedef_yol):
             continue
 
         break
-
-    ekran_goruntusu.rename(yeni_dosya_yolu)
-    print(
-        f"Başarılı! '{ekran_goruntusu.name}' -> '{yeni_dosya_yolu.name}' olarak taşındı.\n"
-    )
+    if dry_run:
+        print(
+                    f"Prova Başarılı! '{ekran_goruntusu.name}' -> '{yeni_dosya_yolu.name}' olarak taşınacaktı.\n"
+                )
+    else:    
+        ekran_goruntusu.rename(yeni_dosya_yolu)
+        print(
+            f"Başarılı! '{ekran_goruntusu.name}' -> '{yeni_dosya_yolu.name}' olarak taşındı.\n"
+        )
 
 
 if __name__ == "__main__":
