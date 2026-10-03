@@ -1,53 +1,42 @@
-# Screen Cleaner Tool
+# Ekran Resmi Düzenleyici
 
-Masaüstündeki ekran görüntülerini sırayla Önizleme (Preview) uygulamasında açıp kullanıcının onayına sunan, seçime göre dosyaları yeniden adlandırarak arşivleyen veya çöp kutusuna taşıyan Python tabanlı bir otomasyon aracıdır.
-
----
-
-## Ne Yapar
-
-* **Ekran Görüntülerini Tutar:** Belirtilen klasördeki (`Desktop`) yalnızca `"Ekran Resmi"` veya `"Screenshot"` ile başlayan ve `.jpg`, `.jpeg`, `.png` uzantılı dosyaları tespit eder.
-* **Görsel Önizleme Sağlar:** Her bir görseli macOS Önizleme (Preview) uygulamasında 3 saniye boyunca otomatik açıp incelenmesine olanak tanır ve ardından kapatır.
-* **Dosya Yönetimi ve Arşivleme:**
-  * **Sakla (E):** Kullanıcıdan yeni bir dosya adı alarak dosyayı uzantısını koruyacak şekilde Hedef Klasöre (`Desktop/Çeşitli Dökümanlar`) taşır.
-  * **Sil (H):** Dosyayı kalıcı olarak silmek yerine macOS Çöp Kutusu'na güvenli bir şekilde aktarır (`send2trash`).
-* **Çakışma ve Boş İsim Kontrolü:** İsim çakışmalarını ve boş dosya adı girişlerini engelleyen doğrulama mekanizmalarına sahiptir.
+Masaüstündeki ekran görüntülerini otomatik tespit eden, kullanıcıya önizleme ile gösterip onay alan, seçime göre dosyaları yeniden adlandırıp hedef klasöre taşıyan veya çöp kutusuna atan Python aracı.
 
 ---
 
-## Nasıl Kurulur
+## Özellikler
 
-Script bağımlılık olarak yalnızca `send2trash` kütüphanesini gerektirir.
+- **Görsel Önizleme:** Görselleri macOS `Preview` uygulaması ile 3 saniye açıp kapatır.
+- **Güvenli Taşıma:** Hedef klasörde aynı isimde dosya varsa üzerine yazmaz, kullanıcıyı uyararak yeni isim ister.
+- **Çöp Kutusu Desteği:** Silinen dosyaları kalıcı olarak silmez, `send2trash` ile güvenli şekilde çöp kutusuna gönderir.
+- **Loglama (Günlük):** Yapılan tüm işlemleri zaman damgasıyla birlikte `gunluk.json` dosyasına kaydeder.
+- **Simülasyon Modu (`--dry-run`):** Dosya sisteminde değişiklik yapmadan prova çalıştırması sağlar.
 
-1. **Gereksinimleri Yükleyin:**
-   ```bash
-   pip install send2trash
+---
 
-Nasıl Çalıştırılır
+## Kurulum
 
-Kod dosyanızın bulunduğu dizine terminal üzerinden erişin:
+Projeyi çalıştırmak için gerekli bağımlılıkları yükleyin:
 
-cd /dosyanizin/bulundugu/dizin
+```bash
+uv pip install send2trash
 
-Terminal üzerinden Python betiğini başlatmanız yeterlidir:
+Çalıştırmak için 
 
-python main.py
+python src/python_gunlugu/week4/ekranResmiProjesi/ekranResmiProjesi.py
 
-Betik çalıştığında, karşılaştığı her ekran görüntüsü için terminalde (E/H) seçeneği sunacaktır:
+Proje argparse ile 3 farklı parametre destekler:
 
-E girilirse: Terminal sizden uzantısız yeni bir isim ister ve dosyayı Çeşitli Dökümanlar klasörüne taşır.
+--klasor	-	Kaynak masaüstü klasörü	
+default :test
+--hedef	-	İşlenen dosyaların taşınacağı klasör	
+default :test_hedef
+--dry-run	-	Değişiklik yapmadan simülasyon çalıştırır	
 
-H girilirse: Dosya send2trash ile güvenli şekilde çöpe atılır.
 
-Bilinen Sınırlar
-macOS Bağımlılığı: subprocess.run(["open", ...]) ve osascript (AppleScript) komutları kullanıldığı için kod yalnızca macOS sistemlerde çalışır. Linux veya Windows platformlarında çalışmaz.
+Mevcut Sınırlamalar ve Çalışma Mantığı
+Aynı İsimli Dosya Çakışması: Hedef klasörde (hedef_yol) girilen yeni isimde bir dosya zaten mevcutsa, sistem mevcut dosyanın üzerine yazmaz. Hata mesajı basarak kullanıcıdan yeni bir isim girmesini ister.
 
-Sabit Zamanlayıcı (3 Saniye): Önizleme penceresi her görsel için sabit olarak 3 saniye açık kalır; büyük veya detaylı inceleme gerektiren görseller için bu süre yetersiz kalabilir.
+İşlem Günlüğü: Gerçekleşen işlemler (E veya H kararları) betiğin bulunduğu dizindeki gunluk.json dosyasına işlenir. Silme (H) durumunda yeni_ad alanı null olarak kaydedilir.
 
-Önizleme Kapanma Çakışması: Kod quit app "Preview" komutunu çalıştırdığından, arka planda Önizleme uygulamasında açık olan diğer tüm pencereler/dokümanlar da kapatılır.
-
-Kaynak Klasör --klasor "kaynak klasör" şeklinde tanımlanabilir. Default değeri "test"
-Hedef Klasör --hedef "hedef klasör" şeklinde tanılanabilir. Default değeri "test_hedef"
-
---dry-run ile diskte değişiklik yapmadan test edebilirsin. disk hareketleri metin olarak prove edilir.
-###
+Platform Bağımlılığı: Önizleme (open ve osascript) komutları macOS işletim sistemine özeldir.
