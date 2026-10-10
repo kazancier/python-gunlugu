@@ -68,10 +68,8 @@ def ekran_goruntusu_gerekli_mi(ekran_goruntusu):
     """
     subprocess.run(["open", str(ekran_goruntusu)], check=True)
     time.sleep(3)
-    try:
-        subprocess.run(["osascript", "-e", 'quit app "Preview"'], check=False)
-    except subprocess.CalledProcessError:
-        pass
+    subprocess.run(["osascript", "-e", 'quit app "Preview"'], check=False)
+   
 
     while True:
         cevap = (
