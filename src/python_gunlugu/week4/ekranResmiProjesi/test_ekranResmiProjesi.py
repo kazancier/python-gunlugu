@@ -4,7 +4,7 @@ from ekranResmiProjesi import json_yaz
 
 
 def test_json_success(tmp_path):
-    hareketler ="[]"
+    hareketler ="["
     """
     with open(tmp_path/"gunluk.json", "w", encoding="utf-8" ) as file:
             json.dump(hareketler, file, ensure_ascii=False, indent=4)

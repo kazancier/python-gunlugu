@@ -141,7 +141,7 @@ def yeni_isim(ekran_goruntusu, hedef_yol,dry_run_param):
            
         ) 
         if json_yaz("E", ekran_goruntusu.name,yeni_dosya_yolu.name,my_json_file) == False:
-            "Günlük kaydı yapılamadı."
+            print("Günlük kaydı yapılamadı.")
 
 def json_yaz(karar, dosya, yeni_ad,json_):
     json_file = json_
