@@ -20,7 +20,7 @@ def test_json_success(tmp_path):
     assert json_yaz("E","EkranResmi001.png","Notlar.png",dosya) == True
     
 
-def test_json_exists(tmp_path):
+def test_json_missed(tmp_path):
     
     dosya = tmp_path /" "
     assert json_yaz("E","EkranResmi001.png","Notlar.png",dosya) == True
