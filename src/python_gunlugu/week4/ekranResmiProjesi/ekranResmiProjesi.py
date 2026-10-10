@@ -6,7 +6,7 @@ import argparse
 from datetime import datetime
 import json
 
-
+my_json_file =Path(__file__).parent / "gunluk.json"
 
 def main():
 
@@ -20,7 +20,7 @@ def main():
     hedef_yol = Path.home() / "Desktop" / args.hedef
     dry_run_status =args.dry_run
 
-   # json_yaz("1","2","3")
+    my_json_file =Path(__file__).parent / "gunluk.json"
   
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
 
@@ -96,7 +96,8 @@ def tasi_cop(ekran_goruntusu,dry_run_param):
         else:
             send2trash(ekran_goruntusu)
             print(f"'{ekran_goruntusu.name}' çöp kutusuna taşındı.\n")
-            json_yaz("H",ekran_goruntusu.name , None)
+            if json_yaz("H",ekran_goruntusu.name , None,my_json_file)== False:
+                print("Günluk kaydı oluşturulamadı.")
 
     else:
         print("Dosya bulunamadı.\n")
@@ -139,14 +140,20 @@ def yeni_isim(ekran_goruntusu, hedef_yol,dry_run_param):
             f"Başarılı! '{ekran_goruntusu.name}' -> '{yeni_dosya_yolu.name}' olarak taşındı.\n"
            
         ) 
-        json_yaz("E", ekran_goruntusu.name,yeni_dosya_yolu.name)
+        if json_yaz("E", ekran_goruntusu.name,yeni_dosya_yolu.name,my_json_file) == False:
+            "Günlük kaydı yapılamadı."
 
-def json_yaz(karar, dosya, yeni_ad):
-    json_file =Path(__file__).parent / "gunluk.json"
-
+def json_yaz(karar, dosya, yeni_ad,json_):
+    json_file = json_
+    sonuc = True
     if json_file.exists():
         with open(json_file, "r", encoding="utf-8") as file:
-            hareketler = json.load(file)
+            try:
+                hareketler = json.load(file)
+            except:
+                sonuc = False
+                return sonuc
+
     else:
         hareketler = []
 
@@ -162,6 +169,8 @@ def json_yaz(karar, dosya, yeni_ad):
 
     with open(json_file, "w", encoding="utf-8" ) as file:
         json.dump(hareketler, file, ensure_ascii=False, indent=4)
+
+    return sonuc
 
 if __name__ == "__main__":
     main()
