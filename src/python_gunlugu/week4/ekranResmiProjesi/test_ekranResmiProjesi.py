@@ -1,4 +1,3 @@
-import json
 
 from ekranResmiProjesi import json_yaz
 

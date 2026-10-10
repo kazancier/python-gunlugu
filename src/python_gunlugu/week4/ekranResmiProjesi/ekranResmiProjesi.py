@@ -1,10 +1,11 @@
-from pathlib import Path
+import argparse
+import json
 import subprocess
 import time
-from send2trash import send2trash
-import argparse
 from datetime import datetime
-import json
+from pathlib import Path
+
+from send2trash import send2trash
 
 my_json_file =Path(__file__).parent / "gunluk.json"
 
@@ -19,8 +20,6 @@ def main():
     masaustu = Path.home() / "Desktop" / args.klasor
     hedef_yol = Path.home() / "Desktop" / args.hedef
     dry_run_status =args.dry_run
-
-    my_json_file =Path(__file__).parent / "gunluk.json"
   
     ekran_goruntuleri = ekran_resimlerini_getir(masaustu)
 
@@ -51,7 +50,7 @@ def ekran_resimlerini_getir(target_path):
 
     for dosya in target_path.iterdir():
         isim = dosya.name
-        isim_uygun = isim.startswith("Ekran Resmi") or isim.startswith("Screenshot")
+        isim_uygun = isim.startswith(("Ekran Resmi","Screenshot"))
         uzanti_uygun = dosya.suffix.lower() in gecerli_uzantilar
 
         if isim_uygun and uzanti_uygun:
@@ -67,9 +66,12 @@ def ekran_goruntusu_gerekli_mi(ekran_goruntusu):
     kullanıcı dosyayı gerekli görürse True döner
     Kullanıcı gereksiz görürse False döner
     """
-    subprocess.run(["open", str(ekran_goruntusu)])
+    subprocess.run(["open", str(ekran_goruntusu)], check=True)
     time.sleep(3)
-    subprocess.run(["osascript", "-e", 'quit app "Preview"'])
+    try:
+        subprocess.run(["osascript", "-e", 'quit app "Preview"'], check=False)
+    except subprocess.CalledProcessError:
+        pass
 
     while True:
         cevap = (
@@ -150,7 +152,7 @@ def json_yaz(karar, dosya, yeni_ad,json_):
         with open(json_file, "r", encoding="utf-8") as file:
             try:
                 hareketler = json.load(file)
-            except:
+            except json.decoder.JSONDecodeError:
                 sonuc = False
                 return sonuc
 
