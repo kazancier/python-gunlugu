@@ -24,3 +24,7 @@ def test_json_missed(tmp_path):
     dosya = tmp_path /" "
     assert json_yaz("E","EkranResmi001.png","Notlar.png",dosya) == True
     
+def test_json_notList(tmp_path):
+    dosya =tmp_path / "gunluk_json"
+    dosya.write_text('{"karar": "E"}')
+    assert json_yaz("E","EkranResmi001.png","Notlar.png",dosya) == True
