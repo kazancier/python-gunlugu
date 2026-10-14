@@ -6,8 +6,8 @@ def create_note(date,subject,note,keywords):
         my_dict["subject"] = subject
         my_dict["note"] = note
         my_dict["keywords"] = keywords
-        return my_dict
+        return (True,my_dict)
         
     else:
-        return (False,"Not oluşturulamadı")
+        return (False,"Konu boş olduğu için not oluşturulamadı.")
 
