@@ -19,11 +19,10 @@ def create_note(date,subject,note,keywords):
 def write_note(veri_dict,dosya_yolu):
     try:
         with open(dosya_yolu,"w",encoding="utf-8") as dosya:
-            json.dump(veri_dict,dosya,ensure_ascii=False,indent=4)
-
-        return (True,"Kayıt başarılı")
-    except Exception as e:
-        return (False,f"Hata: {e}")
+            json.dump(veri_dict,dosya,ensure_ascii=False,indent=4)   
+        return True,f"Dosya başarıyla yazıldı." 
+    except FileNotFoundError:
+        return False,f"Dosya yolu bulunamadı."
 
         
 
