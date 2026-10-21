@@ -1,5 +1,6 @@
 
 import json
+from datetime import datetime
 
 
   
@@ -34,4 +35,8 @@ def read_note(dosya_yolu):
         
 
 
-
+def return_now():
+    now_ = datetime.now()
+    format_datetime = "%d-%m-%Y %H:%M:%S"
+    str_now_ = now_.strftime(format_datetime)
+    return str_now_

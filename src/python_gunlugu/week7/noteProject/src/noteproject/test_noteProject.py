@@ -1,5 +1,5 @@
-from noteproject.noteProjectMain import create_note, write_note, read_note
-
+from noteproject.noteProjectMain import create_note, write_note, read_note, return_now
+from datetime import datetime
 
 veri_dict = {
         "date" : "01.01.2026", 
@@ -24,7 +24,7 @@ def test_subject_whitespace():
 
 def test_write_note_success(tmp_path):
     dosya = tmp_path / "note.json "
-    assert write_note(veri_dict,dosya)[0] == True
+    assert write_note([veri_dict],dosya)[0] == True
 
 def test_read_note_json(tmp_path):
     dosya =tmp_path / "note.json"
@@ -34,3 +34,8 @@ def test_read_write_ifequals(tmp_path):
     dosya =tmp_path / "note.json"
     write_note(veri_dict,dosya)
     assert read_note(dosya) == veri_dict
+
+def test_return_now_check():
+    format_datetime = "%d-%m-%Y %H:%M:%S"
+    str_now=return_now()
+    assert datetime.strptime(str_now,format_datetime)
