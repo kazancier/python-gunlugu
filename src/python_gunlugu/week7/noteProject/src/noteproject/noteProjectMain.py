@@ -20,10 +20,17 @@ def write_note(veri_dict,dosya_yolu):
     try:
         with open(dosya_yolu,"w",encoding="utf-8") as dosya:
             json.dump(veri_dict,dosya,ensure_ascii=False,indent=4)   
-        return True,f"Dosya başarıyla yazıldı." 
+        return True,"Dosya başarıyla yazıldı." 
     except FileNotFoundError:
-        return False,f"Dosya yolu bulunamadı."
+        return False,"Dosya yolu bulunamadı."
 
+def read_note(dosya_yolu):
+    try:
+        with open(dosya_yolu,"r",encoding="utf-8") as dosya:
+            veri = json.load(dosya)
+        return dosya
+    except FileNotFoundError:
+        return "[]"
         
 
 
