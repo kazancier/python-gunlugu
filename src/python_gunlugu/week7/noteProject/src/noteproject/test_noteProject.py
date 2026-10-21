@@ -28,4 +28,9 @@ def test_write_note_success(tmp_path):
 
 def test_read_note_json(tmp_path):
     dosya =tmp_path / "note.json"
-    assert read_note(dosya) == "[]"
+    assert read_note(dosya) == []
+
+def test_read_write_ifequals(tmp_path):
+    dosya =tmp_path / "note.json"
+    write_note(veri_dict,dosya)
+    assert read_note(dosya) == veri_dict
