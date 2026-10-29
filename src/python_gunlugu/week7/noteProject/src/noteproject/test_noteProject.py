@@ -18,7 +18,13 @@ def test_write_note_directory_missed(tmp_path):
     dosya = tmp_path / "yok" / " "
     
     assert write_note(veri_dict,dosya)[0] == False
+
+
+def test_write_note_is_directory(tmp_path): 
+    dosya = tmp_path
     
+    assert write_note(veri_dict,dosya)[0] == False
+
 def test_subject_whitespace():
     assert create_note("01.01.2026","   ","test_note","test_keyword")[0] == False
 

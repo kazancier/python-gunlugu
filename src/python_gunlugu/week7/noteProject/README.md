@@ -3,6 +3,8 @@ Kullanıcı terminalden notlarını json dosyasına kayıt eder. Notlar date, su
 
 Notlar json dosyasına kayıt edilir. Sözlük tercih edilmesinin sebebi notun herhangi bir alanına key ile ulaşılabilmesidir. Liste kullanılsa ve ilerleyen zamanda bir alan eklense indexler değişirdi. Örneğin index[1] ile bugün subjecte erişilebiliyorken, alan eklendikten sonra başka bir alan dönebilir.
 
+write_note dosya_yolu olarak var olan bir klasör yolu verilirse False ve Bu bir klasör hata mesajı verilir. olmayan bir dosya yolu verilirse False ve Dosya yolu bulunamadı mesajı verir.
+
 create_note tuple döndürür. Bool, mesaj / sözlük.
 Bool'u doğrudan koşul olarak kullanabilirsin.
 Çağıran Bool'a bakmazsa jsona mesajı kaydedebilir.
@@ -15,7 +17,7 @@ ilk sürümde olanlar :
 Terminalden not kaydı.
 Boş konu kontrolü.
 json yoksa oluşturma.
-jsonın dosya bulunamazsa kontorlü
+jsonın dosya bulunamazsa kontrolü, klasörmü kontrolü
 
 İlk sürümde olmayanlar :
 Notların görüntülenmesi.

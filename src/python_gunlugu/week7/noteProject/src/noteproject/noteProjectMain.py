@@ -24,6 +24,8 @@ def write_note(veri_dict,dosya_yolu):
         return True,"Dosya başarıyla yazıldı." 
     except FileNotFoundError:
         return False,"Dosya yolu bulunamadı."
+    except IsADirectoryError:
+        return False,"Bu bir klasör."
 
 def read_note(dosya_yolu):
     try:
