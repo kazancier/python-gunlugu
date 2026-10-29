@@ -1,4 +1,12 @@
-from noteproject.noteProjectMain import create_note 
+from noteproject.noteProjectMain import create_note, write_note, read_note, return_now
+from datetime import datetime
+
+veri_dict = {
+        "date" : "01.01.2026 10:00", 
+        "subject" : "test_subject", 
+        "note" : "test_note", 
+        "keywords" : "test_keywords"
+        }
 
 def test_subject_empty():
     assert create_note("01.01.2026","","test_note","test_keyword")[0] == False
@@ -6,3 +14,28 @@ def test_subject_empty():
 def test_subject_exists():
     assert create_note("01.01.2026","test_subject","test_note","test_keyword")[0] == True
 
+def test_write_note_directory_missed(tmp_path): 
+    dosya = tmp_path / "yok" / " "
+    
+    assert write_note(veri_dict,dosya)[0] == False
+    
+def test_subject_whitespace():
+    assert create_note("01.01.2026","   ","test_note","test_keyword")[0] == False
+
+def test_write_note_success(tmp_path):
+    dosya = tmp_path / "note.json "
+    assert write_note([veri_dict],dosya)[0] == True
+
+def test_read_note_json(tmp_path):
+    dosya =tmp_path / "note.json"
+    assert read_note(dosya) == []
+
+def test_read_write_ifequals(tmp_path):
+    dosya =tmp_path / "note.json"
+    write_note([veri_dict],dosya)
+    assert read_note(dosya) == [veri_dict]
+
+def test_return_now_check():
+    format_datetime = "%d-%m-%Y %H:%M"
+    str_now=return_now()
+    assert datetime.strptime(str_now,format_datetime)
