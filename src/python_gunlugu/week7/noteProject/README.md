@@ -12,7 +12,7 @@ Bool'u doğrudan koşul olarak kullanabilirsin.
 Create_note subject olarak character girilmemişse (boşluk, satır başı vb) False ve Hata mesajı döner.,
 
 read_note bir json dosyasını başarı ile okuyabilirse true ve jsondaki listeyi döndürür.
-Hata alırsa: eğer dosya yolu bulnamadıysa boş false ve boş liste döndürür. eğer json dosyası bozuksa alternatif bir dosya adı ile kayıt eder.
+Hata alırsa: eğer dosya yolu bulnamadıysa boş false ve boş liste döndürür. eğer json dosyası bozuk dosyayı zaman damgası ile başka isimle kayıt eder. Mevcut dosyanın üzerine yazar. Böylece birden çok hatalı dosya durumunda veri kaybı olmaz
 
 note.json kullanıcının notları github 'a gitmesin diye gitignoreda var.  repo public olunca giren herkes kullanıcın notlarını görür
 
