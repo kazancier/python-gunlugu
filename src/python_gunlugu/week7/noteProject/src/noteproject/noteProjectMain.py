@@ -24,19 +24,29 @@ def write_note(veri_dict,dosya_yolu):
         return True,"Dosya başarıyla yazıldı." 
     except FileNotFoundError:
         return False,"Dosya yolu bulunamadı."
+    except IsADirectoryError:
+        return False,"Bu bir klasör."
 
 def read_note(dosya_yolu):
     try:
         with open(dosya_yolu,"r",encoding="utf-8") as dosya:
             veri = json.load(dosya)
-        return veri
-    except (FileNotFoundError,json.JSONDecodeError):
-        return []
+        return True,veri
+    except (FileNotFoundError):
+        return False, []
+    except(json.JSONDecodeError):
+        return False, "Dosya bozuk."
         
 
 
 def return_now():
     now_ = datetime.now()
     format_datetime = "%d-%m-%Y %H:%M"
+    str_now_ = now_.strftime(format_datetime)
+    return str_now_
+
+def return_now_for():
+    now_ = datetime.now()
+    format_datetime = "%d-%m-%Y-%H-%M"
     str_now_ = now_.strftime(format_datetime)
     return str_now_
