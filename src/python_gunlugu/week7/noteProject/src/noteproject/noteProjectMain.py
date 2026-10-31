@@ -31,9 +31,11 @@ def read_note(dosya_yolu):
     try:
         with open(dosya_yolu,"r",encoding="utf-8") as dosya:
             veri = json.load(dosya)
-        return veri
-    except (FileNotFoundError,json.JSONDecodeError):
-        return []
+        return True,veri
+    except (FileNotFoundError):
+        return False, []
+    except(json.JSONDecodeError):
+        return False, "Dosya bozuk."
         
 
 

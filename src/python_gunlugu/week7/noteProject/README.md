@@ -9,7 +9,10 @@ create_note tuple döndürür. Bool, mesaj / sözlük.
 Bool'u doğrudan koşul olarak kullanabilirsin.
 Çağıran Bool'a bakmazsa jsona mesajı kaydedebilir.
 
-Create_note subject olarak character girilmemişse (boşluk, satır başı vb) False ve Hata mesajı döner.
+Create_note subject olarak character girilmemişse (boşluk, satır başı vb) False ve Hata mesajı döner.,
+
+read_note bir json dosyasını başarı ile okuyabilirse true ve jsondaki listeyi döndürür.
+Hata alırsa: eğer dosya yolu bulnamadıysa boş false ve boş liste döndürür. eğer json dosyası bozuksa alternatif bir dosya adı ile kayıt eder.
 
 note.json kullanıcının notları github 'a gitmesin diye gitignoreda var.  repo public olunca giren herkes kullanıcın notlarını görür
 
