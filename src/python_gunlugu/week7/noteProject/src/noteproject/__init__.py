@@ -26,8 +26,9 @@ def main() -> None:
                         write_status, write_msg =write_note(json_note,my_path)
                         print(write_msg)
                     else:
+                        json_note = []
                         json_note.append(create_msg)
-                        write_status, write_msg =write_note(json_note,my_path)
+                        write_status, write_msg =write_note(json_note,my_path_alt)
                         print(write_msg)
                         print(json_note)
 

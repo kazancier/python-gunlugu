@@ -51,4 +51,4 @@ def test_invalid_json(tmp_path):
     dosya = tmp_path / "invalid.json"
     invalid_json_content = '{ "date" : "01.01.2026", "subject" : "özel", "note": "özel not" "keyword" : "özel, not" } '
     dosya.write_text(invalid_json_content, encoding="utf-8")
-    read_note(dosya)[0] == False
+    assert read_note(dosya)[0] == False
