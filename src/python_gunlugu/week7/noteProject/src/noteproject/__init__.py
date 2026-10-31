@@ -1,9 +1,9 @@
-from noteproject.noteProjectMain import create_note, write_note, read_note, return_now
+from noteproject.noteProjectMain import create_note, write_note, read_note, return_now,return_now_for
+from pathlib import Path
 
 def main() -> None:
 
     my_path="note.json"
-    my_path_alt ="notealt.json"
     while True: 
         first_answer = input("Not eklemek ister misin? \n Y/N ? ")
         json_note =[]
@@ -28,7 +28,10 @@ def main() -> None:
                     else:
                         json_note = []
                         json_note.append(create_msg)
-                        write_status, write_msg =write_note(json_note,my_path_alt)
+                        new_name ="note"+return_now_for()+".json"
+                        my_path = Path("note.json")
+                        my_path.rename(new_name)
+                        write_status, write_msg =write_note(json_note,my_path)
                         print(write_msg)
                         print(json_note)
 

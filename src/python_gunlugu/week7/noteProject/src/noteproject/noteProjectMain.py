@@ -44,3 +44,9 @@ def return_now():
     format_datetime = "%d-%m-%Y %H:%M"
     str_now_ = now_.strftime(format_datetime)
     return str_now_
+
+def return_now_for():
+    now_ = datetime.now()
+    format_datetime = "%d-%m-%Y-%H-%M"
+    str_now_ = now_.strftime(format_datetime)
+    return str_now_
