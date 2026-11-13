@@ -1,10 +1,12 @@
 def main():
     girdi_list, gecersiz_list = sayi_al()
+    gecersiz_list_cikti = ",".join(gecersiz_list)
     if len(girdi_list) != 0:
         ortalama = ortalama_cikti(girdi_list)
-        print(f"Geçersiz, atlandı: {gecersiz_list} \nAdet: {len(girdi_list)}, Ortalama: {ortalama:.2f}")
+        print(f"Geçersiz, atlandı: {gecersiz_list_cikti} \nAdet: {len(girdi_list)}, Ortalama: {ortalama:.2f}")
     else:
-        print(f"Geçerli girdi yok")
+        print(f"Geçersiz, atlandı: {gecersiz_list_cikti}")
+        print(f"Sayı girilmedi.")
 def sayi_al():
     durum= True
     girdi_list = []
