@@ -1,11 +1,11 @@
 def main():
     girdi_list, gecersiz_list = sayi_al()
-     
-
-    ortalama = ortalama_cikti(girdi_list)
-    ortalama_ikili = round(ortalama,2)
-    print(f"Geçersiz, atlandı: {gecersiz_list} /n Adet: {len(girdi_list)}, Ortalama: {ortalama_ikili}")
-
+    if len(girdi_list) != 0:
+        ortalama = ortalama_cikti(girdi_list)
+        ortalama_ikili = round(ortalama,2)
+        print(f"Geçersiz, atlandı: {gecersiz_list} \nAdet: {len(girdi_list)}, Ortalama: {ortalama_ikili}")
+    else:
+        print(f"Geçerli girdi yok")
 def sayi_al():
     durum= True
     girdi_list = []
