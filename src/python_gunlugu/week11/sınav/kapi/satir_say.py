@@ -19,6 +19,7 @@ def main():
         print(f"Satır sayısı : {satir_sayisi}")
     else:
         print(f"Dosya bulunamadı: {yol}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
