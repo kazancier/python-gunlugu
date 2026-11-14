@@ -7,12 +7,7 @@ def main():
 
     parser.add_argument("dosya_yolu")
 
-    args = parser.parse_args()
-
-    if not args.dosya_yolu:
-        print("Kullanım: python script.py <dosya>")
-        sys.exit(1)
-        
+    args = parser.parse_args()        
 
     dosya_yolu = args.dosya_yolu
     
